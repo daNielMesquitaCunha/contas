@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
 import List from './List'
+import Header from './Header'
+import '../styles/Home.css'
 
 class Home extends Component {
     constructor(props){
@@ -10,7 +12,7 @@ class Home extends Component {
         this.handleAdd = this.handleAdd.bind(this)
         this.handleRemove = this.handleRemove.bind(this)
         this.state = {
-            contas: [],
+            contas: [{name: 'Comida', value: '45.50'}],
             name: '',
             value: "",
         }
@@ -42,17 +44,16 @@ class Home extends Component {
             }
         })
 
-
         this.setState({ ...this.state, contas: novasContas})
     }
 
     render(){
         return (
-            <div>
-                <h1> Home </h1>
-                    <input id="name" type="text" placeholder="Nome" value={this.state.name} onChange={this.handleChangeName}/>
-                    <input id="value "type="number" placeholder="00.0" value={this.state.value} onChange={this.handleChangeValue}/>
-                    <button type="button" onClick={this.handleAdd}>+</button>
+            <div className="container-fluid master">
+                <Header/>
+                <input id="name" type="text" placeholder="Nome" value={this.state.name} onChange={this.handleChangeName}/>
+            <input id="value "type="number" placeholder="00.0" value={this.state.value} onChange={this.handleChangeValue}/>
+            <button type="button" onClick={this.handleAdd}>+</button>
                <List list={this.state.contas} handleRemove={this.handleRemove}/> 
             </div>
         )
