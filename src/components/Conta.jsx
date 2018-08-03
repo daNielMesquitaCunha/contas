@@ -5,7 +5,7 @@ export default props => {
         <div>
             <h2>{props.name}</h2>
             <h2>{props.valor}</h2>
-            <button>Remover</button>
+            <button onClick={props.handleRemove}>Remover</button>
         </div>
     )
 }

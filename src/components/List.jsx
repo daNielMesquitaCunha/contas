@@ -1,18 +1,25 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Conta from './Conta'
 
-export default props => {
+export default class List extends Component {
 
-    const render = () => {
-        return props.list.map((conta) => {
-            <Conta name={conta.name} valor={conta.value} />
+    render(){
+
+        const contas = this.props.list.map((conta, key) => {
+            return (
+                <div key={key}>
+                    <h2>{conta.name}</h2>
+                    <h2>{conta.value}</h2>
+                    <button onClick={() => this.props.handleRemove(conta)}>Remover</button>
+                 </div>
+            )
         })
-        console.log(props.list)
-    }
 
-    return (
-        <div>
-            { render() }
-        </div>
-    )
+        return (
+            <div>
+                { contas }
+            </div>
+        )
+    }
+    
 }

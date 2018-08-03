@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
-//import List from './List'
-import Conta from './Conta'
+import List from './List'
 
 class Home extends Component {
     constructor(props){
@@ -9,8 +8,9 @@ class Home extends Component {
         this.handleChangeName = this.handleChangeName.bind(this)
         this.handleChangeValue = this.handleChangeValue.bind(this)
         this.handleAdd = this.handleAdd.bind(this)
+        this.handleRemove = this.handleRemove.bind(this)
         this.state = {
-            contas: [{}],
+            contas: [],
             name: '',
             value: "",
         }
@@ -32,17 +32,28 @@ class Home extends Component {
         this.setState({ ...this.state, name: '', value: '', contas: this.state.contas.concat(conta)})
     }
 
-    render(){
-        let contas = this.state.contas.map(conta => {
-            return <Conta name={conta.name} valor={conta.value} />
+    handleRemove(cont){
+
+        let novasContas= [];
+
+        const newCounts = this.state.contas.forEach((conta)=>{
+            if(conta.name !== cont.name){
+                novasContas = novasContas.concat(conta)
+            }
         })
+
+
+        this.setState({ ...this.state, contas: novasContas})
+    }
+
+    render(){
         return (
             <div>
                 <h1> Home </h1>
                     <input id="name" type="text" placeholder="Nome" value={this.state.name} onChange={this.handleChangeName}/>
                     <input id="value "type="number" placeholder="00.0" value={this.state.value} onChange={this.handleChangeValue}/>
                     <button type="button" onClick={this.handleAdd}>+</button>
-                {contas}
+               <List list={this.state.contas} handleRemove={this.handleRemove}/> 
             </div>
         )
     }
