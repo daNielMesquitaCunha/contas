@@ -17,15 +17,9 @@
 }
 
 .group{
-  width: 70%;
+  width: 100%;
   padding-top: 10px;
   padding-left: 50px;
-}
-
-.list{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 }
 
 .total {

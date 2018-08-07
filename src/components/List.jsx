@@ -22,9 +22,6 @@ export default class List extends Component {
                 <ul className="list-group list-group-flush group">
                     { contas }              
                 </ul>
-                <div className="total">
-                    <h1 className="name-text">Total {soma}</h1>        
-                </div>
             </div>
         )
     }

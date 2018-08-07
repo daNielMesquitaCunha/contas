@@ -12,7 +12,7 @@ class Home extends Component {
         this.handleAdd = this.handleAdd.bind(this)
         this.handleRemove = this.handleRemove.bind(this)
         this.state = {
-            contas: [{name: 'Comida', value: '45.50'}],
+            contas: [],
             name: '',
             value: "",
         }
@@ -20,6 +20,7 @@ class Home extends Component {
 
     handleChangeName(e){
       this.setState({ ...this.state, name: e.target.value })
+      console.log(this.state.name)
     }
 
     handleChangeValue(e){
@@ -49,12 +50,9 @@ class Home extends Component {
 
     render(){
         return (
-            <div className="container-fluid master">
-                <Header/>
-                <input id="name" type="text" placeholder="Nome" value={this.state.name} onChange={this.handleChangeName}/>
-            <input id="value "type="number" placeholder="00.0" value={this.state.value} onChange={this.handleChangeValue}/>
-            <button type="button" onClick={this.handleAdd}>+</button>
-               <List list={this.state.contas} handleRemove={this.handleRemove}/> 
+            <div className="container">
+                <Header valueName ={this.state.name} onChangeName={this.handleChangeName} value={this.state.value} onChangeValue={this.handleChangeValue} adicionar={this.handleAdd}/>
+                <List list={this.state.contas} handleRemove={this.handleRemove}/> 
             </div>
         )
     }
