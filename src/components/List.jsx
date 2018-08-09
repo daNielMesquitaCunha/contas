@@ -18,7 +18,7 @@ export default class List extends Component {
         })
 
         return (
-            <div className="list">
+            <div className="list list-test">
                 <ul className="list-group list-group-flush group">
                     { contas }              
                 </ul>
